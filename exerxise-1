@@ -336,3 +336,5 @@ mydatabase> db.orders.find()
   }
 ]
 mydatabase>
+//delete
+db.orders.deleteOne({p_id:2})
