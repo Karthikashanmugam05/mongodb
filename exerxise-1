@@ -338,3 +338,14 @@ mydatabase> db.orders.find()
 mydatabase>
 //delete
 db.orders.deleteOne({p_id:2})
+//find
+mydatabase> db.users.find({name:/^S/});
+[
+  {
+    _id: ObjectId('67ee07a28d930cd2876b140f'),
+    u_id: 5,
+    name: 'Suresh',
+    city: 'Salem'
+  }
+]
+mydatabase>
