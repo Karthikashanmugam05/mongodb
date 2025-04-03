@@ -1,1 +1,245 @@
+mydatabase> db.createCollection("users");
+{ ok: 1 }
+mydatabase> db.users.insertMany([
+...   { "u_id": 1, "name": "Karthika", "city": "Chennai" },
+...   { "u_id": 2, "name": "Ishwarya", "city": "Coimbatore" },
+...   { "u_id": 3, "name": "Rajesh", "city": "Madurai" },
+...   { "u_id": 4, "name": "Divya", "city": "Trichy" },
+...   { "u_id": 5, "name": "Suresh", "city": "Salem" }
+... ])
+...
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('67ee07a28d930cd2876b140b'),
+    '1': ObjectId('67ee07a28d930cd2876b140c'),
+    '2': ObjectId('67ee07a28d930cd2876b140d'),
+    '3': ObjectId('67ee07a28d930cd2876b140e'),
+    '4': ObjectId('67ee07a28d930cd2876b140f')
+  }
+}
+mydatabase> db.createCollection("products")
+{ ok: 1 }
+mydatabase> db.products.insertMany([
+...   { "p_id": 101, "name": "Laptop", "price": 60000, "category": "Electronics", "stock": 10 },
+...   { "p_id": 102, "name": "Mobile", "price": 20000, "category": "Electronics", "stock": 20 },
+...   { "p_id": 103, "name": "Headphones", "price": 3000, "category": "Accessories", "stock": 30 },
+...   { "p_id": 104, "name": "Tablet", "price": 25000, "category": "Electronics", "stock": 15 },
+...   { "p_id": 105, "name": "Smart Watch", "price": 5000, "category": "Wearables", "stock": 25 }
+... ])
+...
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('67ee07ca8d930cd2876b1410'),
+    '1': ObjectId('67ee07ca8d930cd2876b1411'),
+    '2': ObjectId('67ee07ca8d930cd2876b1412'),
+    '3': ObjectId('67ee07ca8d930cd2876b1413'),
+    '4': ObjectId('67ee07ca8d930cd2876b1414')
+  }
+}
+mydatabase> db.createCollection("orders")
+{ ok: 1 }
+mydatabase> db.orders.insertMany([
+...   { "o_id": 1, "u_id": 1, "p_id": 101, "qty": 1, "status": "Pending" },
+...   { "o_id": 2, "u_id": 2, "p_id": 102, "qty": 2, "status": "Shipped" },
+...   { "o_id": 3, "u_id": 3, "p_id": 103, "qty": 1, "status": "Delivered" },
+...   { "o_id": 4, "u_id": 4, "p_id": 104, "qty": 1, "status": "Processing" },
+...   { "o_id": 5, "u_id": 5, "p_id": 105, "qty": 3, "status": "Pending" }
+... ])
+...
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('67ee07e98d930cd2876b1415'),
+    '1': ObjectId('67ee07e98d930cd2876b1416'),
+    '2': ObjectId('67ee07e98d930cd2876b1417'),
+    '3': ObjectId('67ee07e98d930cd2876b1418'),
+    '4': ObjectId('67ee07e98d930cd2876b1419')
+  }
+}
+mydatabase> db.createCollection("payments")
+{ ok: 1 }
+mydatabase> db.payments.insertMany([
+...   { "id": 1, "o_id": 1, "amount": 60000, "status": "Completed", "method": "Credit Card" },
+...   { "id": 2, "o_id": 2, "amount": 40000, "status": "Pending", "method": "UPI" },
+...   { "id": 3, "o_id": 3, "amount": 3000, "status": "Completed", "method": "Net Banking" },
+...   { "id": 4, "o_id": 4, "amount": 25000, "status": "Failed", "method": "Debit Card" },
+...   { "id": 5, "o_id": 5, "amount": 15000, "status": "Pending", "method": "Cash on Delivery" }
+... ])
+...
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('67ee080a8d930cd2876b141a'),
+    '1': ObjectId('67ee080a8d930cd2876b141b'),
+    '2': ObjectId('67ee080a8d930cd2876b141c'),
+    '3': ObjectId('67ee080a8d930cd2876b141d'),
+    '4': ObjectId('67ee080a8d930cd2876b141e')
+  }
+}
+mydatabase> db.users.find()
+[
+  {
+    _id: ObjectId('67ee07a28d930cd2876b140b'),
+    u_id: 1,
+    name: 'Karthika',
+    city: 'Chennai'
+  },
+  {
+    _id: ObjectId('67ee07a28d930cd2876b140c'),
+    u_id: 2,
+    name: 'Ishwarya',
+    city: 'Coimbatore'
+  },
+  {
+    _id: ObjectId('67ee07a28d930cd2876b140d'),
+    u_id: 3,
+    name: 'Rajesh',
+    city: 'Madurai'
+  },
+  {
+    _id: ObjectId('67ee07a28d930cd2876b140e'),
+    u_id: 4,
+    name: 'Divya',
+    city: 'Trichy'
+  },
+  {
+    _id: ObjectId('67ee07a28d930cd2876b140f'),
+    u_id: 5,
+    name: 'Suresh',
+    city: 'Salem'
+  }
+]
+mydatabase> db.products.find()
+[
+  {
+    _id: ObjectId('67ee07ca8d930cd2876b1410'),
+    p_id: 101,
+    name: 'Laptop',
+    price: 60000,
+    category: 'Electronics',
+    stock: 10
+  },
+  {
+    _id: ObjectId('67ee07ca8d930cd2876b1411'),
+    p_id: 102,
+    name: 'Mobile',
+    price: 20000,
+    category: 'Electronics',
+    stock: 20
+  },
+  {
+    _id: ObjectId('67ee07ca8d930cd2876b1412'),
+    p_id: 103,
+    name: 'Headphones',
+    price: 3000,
+    category: 'Accessories',
+    stock: 30
+  },
+  {
+    _id: ObjectId('67ee07ca8d930cd2876b1413'),
+    p_id: 104,
+    name: 'Tablet',
+    price: 25000,
+    category: 'Electronics',
+    stock: 15
+  },
+  {
+    _id: ObjectId('67ee07ca8d930cd2876b1414'),
+    p_id: 105,
+    name: 'Smart Watch',
+    price: 5000,
+    category: 'Wearables',
+    stock: 25
+  }
+]
+mydatabase> db.orders.find()
+[
+  {
+    _id: ObjectId('67ee07e98d930cd2876b1415'),
+    o_id: 1,
+    u_id: 1,
+    p_id: 101,
+    qty: 1,
+    status: 'Pending'
+  },
+  {
+    _id: ObjectId('67ee07e98d930cd2876b1416'),
+    o_id: 2,
+    u_id: 2,
+    p_id: 102,
+    qty: 2,
+    status: 'Shipped'
+  },
+  {
+    _id: ObjectId('67ee07e98d930cd2876b1417'),
+    o_id: 3,
+    u_id: 3,
+    p_id: 103,
+    qty: 1,
+    status: 'Delivered'
+  },
+  {
+    _id: ObjectId('67ee07e98d930cd2876b1418'),
+    o_id: 4,
+    u_id: 4,
+    p_id: 104,
+    qty: 1,
+    status: 'Processing'
+  },
+  {
+    _id: ObjectId('67ee07e98d930cd2876b1419'),
+    o_id: 5,
+    u_id: 5,
+    p_id: 105,
+    qty: 3,
+    status: 'Pending'
+  }
+]
+mydatabase> db.payment.find()
 
+mydatabase> db.payments.find()
+[
+  {
+    _id: ObjectId('67ee080a8d930cd2876b141a'),
+    id: 1,
+    o_id: 1,
+    amount: 60000,
+    status: 'Completed',
+    method: 'Credit Card'
+  },
+  {
+    _id: ObjectId('67ee080a8d930cd2876b141b'),
+    id: 2,
+    o_id: 2,
+    amount: 40000,
+    status: 'Pending',
+    method: 'UPI'
+  },
+  {
+    _id: ObjectId('67ee080a8d930cd2876b141c'),
+    id: 3,
+    o_id: 3,
+    amount: 3000,
+    status: 'Completed',
+    method: 'Net Banking'
+  },
+  {
+    _id: ObjectId('67ee080a8d930cd2876b141d'),
+    id: 4,
+    o_id: 4,
+    amount: 25000,
+    status: 'Failed',
+    method: 'Debit Card'
+  },
+  {
+    _id: ObjectId('67ee080a8d930cd2876b141e'),
+    id: 5,
+    o_id: 5,
+    amount: 15000,
+    status: 'Pending',
+    method: 'Cash on Delivery'
+  }
+]
+mydatabase>
