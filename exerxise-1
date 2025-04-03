@@ -243,3 +243,96 @@ mydatabase> db.payments.find()
   }
 ]
 mydatabase>
+mydatabase> db.orders.find({u_id:1})
+[
+  {
+    _id: ObjectId('67ee07e98d930cd2876b1415'),
+    o_id: 1,
+    u_id: 1,
+    p_id: 101,
+    qty: 1,
+    status: 'Pending'
+  }
+]
+mydatabase> db.payments.find({o_id:1})
+[
+  {
+    _id: ObjectId('67ee080a8d930cd2876b141a'),
+    id: 1,
+    o_id: 1,
+    amount: 60000,
+    status: 'Completed',
+    method: 'Credit Card'
+  }
+]
+mydatabase> db.products.find({name:"Laptop"})
+[
+  {
+    _id: ObjectId('67ee07ca8d930cd2876b1410'),
+    p_id: 101,
+    name: 'Laptop',
+    price: 60000,
+    category: 'Electronics',
+    stock: 10
+  }
+]
+mydatabase> db.orders.updateOne({o_id:1},{$set:{status:"Delivered"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+mydatabase> db.products.updateOne({p_id:101},{$inc:{stock:-1}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+mydatabase> db.orders.find()
+[
+  {
+    _id: ObjectId('67ee07e98d930cd2876b1415'),
+    o_id: 1,
+    u_id: 1,
+    p_id: 101,
+    qty: 1,
+    status: 'Delivered'
+  },
+  {
+    _id: ObjectId('67ee07e98d930cd2876b1416'),
+    o_id: 2,
+    u_id: 2,
+    p_id: 102,
+    qty: 2,
+    status: 'Shipped'
+  },
+  {
+    _id: ObjectId('67ee07e98d930cd2876b1417'),
+    o_id: 3,
+    u_id: 3,
+    p_id: 103,
+    qty: 1,
+    status: 'Delivered'
+  },
+  {
+    _id: ObjectId('67ee07e98d930cd2876b1418'),
+    o_id: 4,
+    u_id: 4,
+    p_id: 104,
+    qty: 1,
+    status: 'Processing'
+  },
+  {
+    _id: ObjectId('67ee07e98d930cd2876b1419'),
+    o_id: 5,
+    u_id: 5,
+    p_id: 105,
+    qty: 3,
+    status: 'Pending'
+  }
+]
+mydatabase>
